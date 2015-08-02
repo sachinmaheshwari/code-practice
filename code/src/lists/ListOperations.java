@@ -10,11 +10,11 @@ public class ListOperations {
 
     public static void main(String[] args) {
         final ListNode head = ListUtility.getList(1, 2, 3, 4, 5, 6);
-        printList(head);
+        ListUtility.printList(head);
         System.out.println(findLength(head));
         final ListNode newHead = insertInList(head, 2, 9999);
-        printList(newHead);
-        printList(reverseList(newHead));
+        ListUtility.printList(newHead);
+        ListUtility.printList(reverseList(newHead));
     }
 
     private static ListNode reverseList(ListNode head) {
@@ -58,15 +58,6 @@ public class ListOperations {
             current = current.getNext();
         }
         return length;
-    }
-
-    private static void printList(ListNode head){
-        ListNode current = head;
-        while(current != null){
-            System.out.printf("[%d]", current.getData());
-            current = current.getNext();
-        }
-        System.out.println("");
     }
 
 }

@@ -19,4 +19,13 @@ public class ListUtility {
 
         return head;
     }
+
+    public static void printList(ListNode head){
+        ListNode current = head;
+        while(current != null){
+            System.out.printf("[%d]", current.getData());
+            current = current.getNext();
+        }
+        System.out.println("");
+    }
 }
