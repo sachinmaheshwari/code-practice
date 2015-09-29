@@ -1,0 +1,68 @@
+Instructions to compile the code:
+=================================
+1. Its a maven project so you just have to run this command
+	mvn clean install
+2. It will create a jar in target folder. This jar includes one sample dictionary.
+
+
+Instructions to run the code:
+=============================
+1. Go to target folder.
+2. Verify there is a jar by the name: "number-to-words-1.0.jar"
+3. Run this command
+	java -jar number-to-words-1.0.jar
+   It will use inbuilt dictionary and prompt you to enter the phone number. It will convert it to word if there is any match found and it will print all matches.
+4. If you want to provide a custom word list then please run this command
+	java -jar number-to-words-1.0.jar -ddictionary.txt
+   Here dictionary.txt is the name of the word file.
+5. If you want to provide a number list using file then please run this command.
+	java -jar number-to-words-1.0.jar numbers.txt
+6. You can provide both custom dictionary and number file in same command.
+
+To exit press ctrl+c
+
+
+Some description of the code:
+=============================
+Application.java:
+This class is the main entry point and all file reading and command reading work is done here.
+
+Constants.java:
+This class holds the constants that are used in the whole application.
+
+Dictionary.java
+This class is responsible for reading the words from the file or input stream and creating a hashmap. It will also provide a word for the passed number given as string.
+
+NumberToWordConverter.java
+This is the class where all possible combinations of words found for a number are evaluated and returned. To accomplish this it uses some collaborators: Dictionary & CombinationHelper.
+
+CombinationHelper.java
+This will return all the possible combinations in which a number can be broken into multiple parts so that we can find out all possible words for that number. For e.g. 123 can be converted to 12-3, 1-23 or 1-2-3
+
+WordsHelper.java
+This class is doing following things
+a. Sanitizing words and nnumbers: removing any punctuation and any other character from the passed word or number and returning a valid word or number.
+b. Managing the mapping between number and corresponding alphabet.
+c. It will also return the unique number for each word.
+
+
+Logic explanations:
+====================
+In my code I'm reading the dictionary first and creating an hash map for all the words. Each word can be mapped to one unique number only for e.g. if "ME" is the word then it will be stored in hash map with key as 63.
+After the dictionary is ready I'm just trying to get the combinations in which a number can be arranged so for e.g. if passed number is "163" then combinations will be 163, 1-63, 16-3 or 1-6-3 then I'm simply searching in hashmap 
+for a word for all of these combinations:
+Assuming only 63 -> ME is in hashmap
+following search will take place
+1. 163 -> "163"
+2. 1-63 -> "1" & "63"
+3  16-3 -> "16" & "3"
+4. 1-6-3 -> "1" & "6" & "3"
+
+All valid words will be returned as a list of string.
+
+Current limitation of my logic: According to my logic for one subset of number there will always be only one word. I'm currently ignoring the multiple words that can have same number for e.g. ME and OF both are 63 in my dictionary only one will be stored.
+This limitation can be fixed although.
+
+
+
+	 

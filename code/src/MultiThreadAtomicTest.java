@@ -25,11 +25,11 @@ public class MultiThreadAtomicTest {
             Thread th = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    //lock.lock();
+                    lock.lock();
                     try{
                         counterVolatile++;
                     } finally {
-                        //lock.unlock();
+                        lock.unlock();
                     }
                 }
             });
