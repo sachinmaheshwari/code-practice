@@ -1,6 +1,8 @@
 package trees;
 
+import java.util.Queue;
 import java.util.Stack;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Created by Sachin Maheshwari on 25-Oct-15.
@@ -23,6 +25,8 @@ public class TraversingNonRecursive<T> {
         nonRecursive.inOrder(root);
         System.out.println(System.lineSeparator() + "Post order");
         nonRecursive.postOrder(root);
+        System.out.println(System.lineSeparator() + "Level order");
+        nonRecursive.levelOrder(root);
     }
 
 
@@ -99,6 +103,30 @@ public class TraversingNonRecursive<T> {
 
             localRoot = stack.pop();
             localRoot = localRoot.getRight();
+        }
+
+    }
+
+
+    public void levelOrder(Node<T> root) {
+        Queue<Node<T>> queue = new ArrayBlockingQueue<Node<T>>(10);
+
+        if(root != null){
+            queue.add(root);
+        }
+
+        while(!queue.isEmpty()){
+            Node<T> current = queue.poll();
+            System.out.print(current.getData() + " ");
+
+            if(current.getLeft() != null){
+                queue.add(current.getLeft());
+            }
+
+            if(current.getRight()!=null){
+                queue.add(current.getRight());
+            }
+
         }
 
     }

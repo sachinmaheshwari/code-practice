@@ -20,6 +20,8 @@ public class TraversingRecursion<T> {
         recursion.preOrder(root);
         System.out.println(System.lineSeparator() + "In Order");
         recursion.inOrder(root);
+        System.out.println(System.lineSeparator() + "Post Order");
+        recursion.postOrder(root);
     }
 
 
@@ -48,6 +50,14 @@ public class TraversingRecursion<T> {
             inOrder(root.getRight());
         }
 
+    }
+
+    public void postOrder(Node<T> root){
+        if(root!=null){
+            postOrder(root.getLeft());
+            postOrder(root.getRight());
+            System.out.print(root.getData() + " ");
+        }
     }
 
 }
