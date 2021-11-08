@@ -1,8 +1,8 @@
 package fromaman;
 
-import hashmap.HashMap;
-import linkedlist.IntegerLinkedList;
-import org.omg.CORBA.SystemException;
+//import hashmap.HashMap;
+//import linkedlist.IntegerLinkedList;
+//import org.omg.CORBA.SystemException;
 
 import java.util.*;
 

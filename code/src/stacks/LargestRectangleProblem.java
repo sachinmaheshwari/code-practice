@@ -22,7 +22,7 @@ public class LargestRectangleProblem {
 
         for (int i = 0; i < sizes.length; i++) {
 
-            while(!stack.empty() && )
+            while(!stack.empty()) {}
 
 
             if (stack.empty()) {
